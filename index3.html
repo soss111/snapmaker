@@ -1,1 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snapmaker Official Distributor — Craft Without Limits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0b;
+    --off-black: #111114;
+    --panel: #16161a;
+    --border: #2a2a32;
+    --accent: #ff6b00;
+    --accent2: #ffaa00;
+    --text: #e8e8ec;
+    --muted: #7a7a8a;
+    --white: #ffffff;
+  }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px;
+  }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(10,10,11,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .nav-logo-mark { width: 36px; height: 36px; background: var(--accent); clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display: flex; align-items: center; justify-content: center; }
+  .nav-logo-mark svg { width: 18px; height: 18px; }
+  .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); letter-spacing: 0.08em; }
+  .nav-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid var(--accent); padding: 0.15rem 0.5rem; border-radius: 2px; margin-left: 0.4rem; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--accent); color: var(--black) !important; font-weight: 600 !important; padding: 0.5rem 1.3rem; border-radius: 3px; transition: background 0.2s, transform 0.1s !important; }
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(255,107,0,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,170,0,0.04) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem,7vw,7rem); line-height: 0.95; color: var(--white); letter-spacing: 0.02em; margin-bottom: 1.8rem; }
+  .hero-title .accent { color: var(--accent); }
+  .hero-title .line2 { display: block; -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary { background: var(--accent); color: var(--black); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.9rem 2rem; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,0,0.3); }
+  .btn-outline { background: transparent; color: var(--text); font-weight: 500; font-size: 0.9rem; letter-spacing: 0.04em; padding: 0.9rem 2rem; border: 1px solid var(--border); border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  .hero-machine { width: 100%; max-width: 560px; position: relative; }
+  .machine-card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; animation: float 6s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .machine-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+  .machine-img { width: 100%; height: 280px; border-radius: 4px; overflow: hidden; position: relative; margin-bottom: 1.5rem; background: #1a1a20; }
+  .machine-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 2px; background: rgba(255,107,0,0.12); color: var(--accent); border: 1px solid rgba(255,107,0,0.25); }
+  .machine-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.3rem; }
+  .machine-sub { font-size: 0.82rem; color: var(--muted); }
+  .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
+  .stat { text-align: center; }
+  .stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--accent); display: block; letter-spacing: 0.04em; }
+  .stat-label { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+  .badge-float { position: absolute; top: -16px; right: 24px; background: var(--accent); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.08em; padding: 0.4rem 1rem; border-radius: 2px; z-index: 3; box-shadow: 0 4px 16px rgba(255,107,0,0.4); }
+
+  .trust-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; gap: 3rem; overflow: hidden; background: var(--off-black); }
+  .trust-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; }
+  .trust-items { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 0.6rem; color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+  .trust-item svg { color: var(--accent); flex-shrink: 0; }
+
+  section { padding: 6rem 3rem; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4rem); color: var(--white); line-height: 1; letter-spacing: 0.02em; margin-bottom: 1rem; }
+  .section-subtitle { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 560px; line-height: 1.75; }
+
+  .products { background: var(--off-black); }
+  .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .product-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+  .product-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,107,0,0.2); }
+  .product-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+  .product-img { height: 200px; background: linear-gradient(135deg,#1c1c22,#222228); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .product-card.featured .product-img { height: 100%; min-height: 260px; }
+  .product-img-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,107,0,0.08) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+  .product-img-inner { width: 70%; height: 70%; opacity: 0.9; }
+  .product-body { padding: 1.5rem; }
+  .product-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .product-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.4rem; }
+  .product-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .product-features { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.2rem; }
+  .product-features li { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+  .product-features li::before { content: '▸'; color: var(--accent); font-size: 0.7rem; }
+  .product-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--white); letter-spacing: 0.04em; }
+  .product-price small { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: var(--muted); font-weight: 400; letter-spacing: 0; }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 4rem; }
+  .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .why-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; transition: border-color 0.2s; }
+  .why-card:hover { border-color: rgba(255,107,0,0.4); }
+  .why-icon { width: 44px; height: 44px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent); }
+  .why-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.4rem; }
+  .why-card-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+  .why-info { display: flex; flex-direction: column; gap: 2rem; }
+  .why-big-num { font-family: 'Bebas Neue', sans-serif; font-size: 6rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--border); letter-spacing: 0.02em; }
+  .why-big-num span { -webkit-text-stroke: 1px var(--accent); color: var(--accent); }
+  .why-text { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.75; max-width: 440px; }
+
+  .process { background: var(--off-black); }
+  .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 4rem; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent); z-index: 0; }
+  .step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--panel); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); margin: 0 auto 1.5rem; letter-spacing: 0.04em; transition: all 0.2s; }
+  .step:hover .step-num { background: var(--accent); color: var(--black); border-color: var(--accent); transform: scale(1.1); }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+
+  .cta-banner { position: relative; background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 3rem; text-align: center; overflow: hidden; }
+  .cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,107,0,0.08) 0%, transparent 70%); }
+  .cta-banner-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,6vw,5.5rem); color: var(--white); letter-spacing: 0.02em; line-height: 1; position: relative; z-index: 1; margin-bottom: 1rem; }
+  .cta-banner-sub { font-size: 1rem; color: var(--muted); font-weight: 300; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+  .cta-banner-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; margin-top: 4rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-icon { width: 40px; height: 40px; background: rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+  .contact-item-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.2rem; }
+  .contact-item-val { font-size: 0.82rem; color: var(--muted); }
+  .contact-form { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group select, .form-group textarea { background: var(--off-black); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 1rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; resize: none; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] { border-color: #f87171; }
+  .form-group select option { background: var(--off-black); }
+
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 3rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+  .footer-logo-mark { width: 32px; height: 32px; background: var(--accent); clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); }
+  .footer-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--white); letter-spacing: 0.08em; }
+  .footer-tagline { font-size: 0.82rem; color: var(--muted); line-height: 1.65; max-width: 260px; margin-bottom: 1.5rem; }
+  .footer-social { display: flex; gap: 0.75rem; }
+  .social-btn { width: 36px; height: 36px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.2s; cursor: pointer; }
+  .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .footer-col-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--white); margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+  .footer-legal { display: flex; gap: 2rem; }
+  .footer-legal a { font-size: 0.75rem; color: var(--muted); text-decoration: none; }
+  .footer-legal a:hover { color: var(--accent); }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* Formspree data attribute styling */
+  [data-fs-error]:not(:empty) { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.4); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; color: #f87171; display: block; }
+  span[data-fs-error]:not(:empty) { background: none; border: none; padding: 0; font-size: 0.72rem; }
+  [data-fs-success] { display: none; }
+  button[data-fs-submit-btn]:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7rem; }
+    .hero-visual { display: none; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .product-card.featured { grid-column: span 2; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .trust-bar { padding: 1.5rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .process-steps::before { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .why-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M9 2L15 5.5V12.5L9 16L3 12.5V5.5L9 2Z" fill="#0a0a0b" stroke="#0a0a0b" stroke-width="1"/><circle cx="9" cy="9" r="2.5" fill="#ff6b00"/></svg>
+    </div>
+    <span class="nav-brand">Snapmaker</span>
+    <span class="nav-badge">Official Distributor</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Official Authorized Distributor</div>
+    <h1 class="hero-title">MAKE<br><span class="accent">ANYTHING</span><br><span class="line2">POSSIBLE</span></h1>
+    <p class="hero-desc">Your authorized source for Snapmaker fabrication machines — combining 3D printing, laser engraving, and CNC carving in one precision platform. Direct pricing, full warranty, local support.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Explore Machines
+      </a>
+      <a href="#contact" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Request a Quote
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-machine">
+      <div class="badge-float">New: Snapmaker U1</div>
+      <div class="machine-card">
+        <div class="machine-img">
+          <img src="https://ditfjx9w4x3vl.cloudfront.net/assets/snapmaker-u1/mob_U1%20Color%203D%20Printer.jpeg" alt="Snapmaker U1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="machine-tags">
+          <span class="tag">Multi-Color</span>
+          <span class="tag">4 Toolheads</span>
+          <span class="tag">SnapSwap™</span>
+        </div>
+        <div class="machine-name">SNAPMAKER U1</div>
+        <div class="machine-sub">270×270×270mm &middot; CoreXY &middot; 500mm/s &middot; 5s toolhead swap</div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-val">4</span><span class="stat-label">Toolheads</span></div>
+          <div class="stat"><span class="stat-val">500</span><span class="stat-label">mm/s Speed</span></div>
+          <div class="stat"><span class="stat-val">5s</span><span class="stat-label">Swap Time</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-label">Trusted By</span>
+  <div class="trust-items">
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Authorized Reseller</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>200+ Happy Customers</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5-Day Local Delivery</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>Dedicated Support Line</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full EU Warranty Coverage</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header fade-up">
+    <div>
+      <div class="section-label">Product Lineup</div>
+      <h2 class="section-title">FIND YOUR<br>MACHINE</h2>
+    </div>
+    <p class="section-subtitle">From desktop hobbyist to professional fabrication studio — a Snapmaker for every workflow.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- U1 FEATURED -->
+    <a href="#contact" class="product-card featured fade-up">
+      <div class="product-img">
+        <div class="product-img-glow"></div>
+        <img src="https://ditfjx9w4x3vl.cloudfront.net/assets/snapmaker-u1/mob_U1%20Color%203D%20Printer.jpeg" alt="Snapmaker U1 Color 3D Printer" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="product-body">
+        <div class="product-badge">&#x1F195; Brand New &middot; Multi-Color &middot; SnapSwap&trade;</div>
+        <div class="product-name">SNAPMAKER U1</div>
+        <p class="product-desc">Next-generation multi-color 3D printer. 4 independent toolheads swap in 5 seconds &mdash; 5&times; faster and up to 80% less filament waste vs filament-changer systems. CoreXY, 500mm/s.</p>
+        <ul class="product-features">
+          <li>SnapSwap&trade; &mdash; 5s toolhead swap, steel-ball kinematic coupling, 1M+ swaps tested</li>
+          <li>Up to 80% less purge waste vs traditional filament changers</li>
+          <li>500mm/s CoreXY with carbon fiber X-axis rails</li>
+          <li>270&times;270&times;270mm build volume &middot; 4 independent extruders</li>
+          <li>RFID filament recognition &middot; Auto-loading &middot; Backup Mode</li>
+          <li>Chamber camera with AI spaghetti detection (OTA) &middot; App control</li>
+          <li>30 curated print-ready models included in Snapmaker Orca</li>
+        </ul>
+        <div class="product-price">from <strong>&euro;749</strong> <small>VAT incl. &middot; rising to &euro;899 soon</small></div>
+      </div>
+    </a>
+
+    <!-- ARTISAN -->
+    <a href="#contact" class="product-card fade-up">
+      <div class="product-img">
+        <div class="product-img-glow"></div>
+        <svg class="product-img-inner" viewBox="0 0 160 160" fill="none">
+          <rect x="15" y="100" width="130" height="8" rx="2" fill="#2a2a32"/><rect x="20" y="22" width="8" height="80" rx="2" fill="#2a2a32"/><rect x="132" y="22" width="8" height="80" rx="2" fill="#2a2a32"/><rect x="20" y="18" width="120" height="8" rx="2" fill="#333340"/><rect x="28" y="58" width="104" height="5" rx="1" fill="#3a3a48"/><rect x="62" y="28" width="36" height="36" rx="3" fill="#1c1c24"/><polygon points="72,64 88,64 80,76" fill="#ff6b00"/><circle cx="80" cy="40" r="5" fill="#ff6b00" opacity="0.8"/><rect x="22" y="18" width="116" height="2" rx="1" fill="#ff6b00" opacity="0.5"/><rect x="8" y="108" width="144" height="42" rx="2" fill="none" stroke="#2a2a32" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="product-badge">3-in-1 Flagship &middot; Red Dot Award</div>
+        <div class="product-name">ARTISAN</div>
+        <p class="product-desc">Ultimate 3-in-1 machine. 400&times;400&times;400mm workspace, dual extrusion, up to 40W laser (cuts 15mm basswood in one pass), 200W CNC. Full Laser Class 1 enclosure included.</p>
+        <ul class="product-features">
+          <li>Dual extrusion &middot; 600+ materials (PLA, ABS, TPU, Nylon, PVA&hellip;)</li>
+          <li>40W laser + Smart Air Assist (Premium) / 10W with camera (Standard)</li>
+          <li>200W CNC &mdash; 20&times; efficiency vs 50W module &middot; ER11 collet</li>
+          <li>Industrial CNC-milled linear rails &middot; 7&quot; touchscreen &middot; Emergency stop</li>
+        </ul>
+        <div class="product-price">from <strong>&euro;2,199</strong> <small>VAT incl. &middot; was &euro;3,299 &middot; Premium from &euro;2,369</small></div>
+      </div>
+    </a>
+
+    <!-- J1s -->
+    <a href="#contact" class="product-card fade-up">
+      <div class="product-img">
+        <div class="product-img-glow"></div>
+        <svg class="product-img-inner" viewBox="0 0 160 160" fill="none">
+          <rect x="10" y="100" width="140" height="8" rx="2" fill="#2a2a32"/><rect x="15" y="18" width="10" height="84" rx="2" fill="#2a2a32"/><rect x="135" y="18" width="10" height="84" rx="2" fill="#2a2a32"/><rect x="15" y="14" width="130" height="8" rx="2" fill="#333340"/><rect x="28" y="56" width="104" height="5" rx="1" fill="#3a3a48"/><rect x="38" y="26" width="30" height="34" rx="3" fill="#1c1c24"/><rect x="92" y="26" width="30" height="34" rx="3" fill="#1c1c24"/><polygon points="46,60 60,60 53,72" fill="#ff6b00"/><polygon points="100,60 114,60 107,72" fill="#ffaa00"/><circle cx="53" cy="38" r="4" fill="#ff6b00" opacity="0.8"/><circle cx="107" cy="38" r="4" fill="#ffaa00" opacity="0.8"/><rect x="17" y="14" width="126" height="2" rx="1" fill="#ff6b00" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <div class="product-badge">High-Speed IDEX &middot; CNET Reviewed</div>
+        <div class="product-name">J1S</div>
+        <p class="product-desc">Fast IDEX printer with Copy, Mirror &amp; Backup modes. No cross-contamination. PVA dissolve + breakaway support. One-piece die-cast body with high-precision linear rails.</p>
+        <ul class="product-features">
+          <li>350mm/s max &middot; 10,000mm/s&sup2; acceleration</li>
+          <li>Copy &middot; Mirror &middot; Backup &middot; Dual-material modes</li>
+          <li>PVA &amp; breakaway support printing</li>
+          <li>300&deg;C hot ends &middot; Enclosed chamber</li>
+        </ul>
+        <div class="product-price"><strong>&euro;1,399</strong> <small>VAT incl. &middot; was &euro;1,789 &middot; save &euro;390</small></div>
+      </div>
+    </a>
+
+    <!-- SNAPMAKER 2.0 -->
+    <a href="#contact" class="product-card fade-up" style="grid-column:span 2">
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:0">
+        <div class="product-img" style="height:100%;min-height:190px">
+          <div class="product-img-glow"></div>
+          <svg class="product-img-inner" viewBox="0 0 160 160" fill="none">
+            <rect x="15" y="100" width="130" height="8" rx="2" fill="#2a2a32"/><rect x="20" y="22" width="8" height="80" rx="2" fill="#2a2a32"/><rect x="132" y="22" width="8" height="80" rx="2" fill="#2a2a32"/><rect x="20" y="18" width="120" height="8" rx="2" fill="#333340"/><rect x="30" y="60" width="100" height="5" rx="1" fill="#3a3a48"/><rect x="62" y="28" width="36" height="38" rx="3" fill="#1c1c24"/><polygon points="72,66 88,66 80,80" fill="#ff6b00" opacity="0.8"/><circle cx="80" cy="42" r="5" fill="#ff6b00" opacity="0.7"/><rect x="22" y="18" width="116" height="2" rx="1" fill="#ff6b00" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-badge">World&#39;s Best-Selling 3-in-1 &middot; IF Design Award &middot; Sizes: A150 / A250T / A350T</div>
+          <div class="product-name">SNAPMAKER 2.0</div>
+          <p class="product-desc">The machine that defined the category. Fully modular and upgradeable &mdash; add 20W &amp; 40W laser modules, Rotary Module, Air Purifier, CAN Hub, 200W CNC. Choose from 3 build sizes.</p>
+          <ul class="product-features" style="display:grid;grid-template-columns:1fr 1fr;gap:0.3rem 1.5rem">
+            <li>3D printing &middot; laser &middot; CNC in one</li>
+            <li>1-minute quick-swap toolheads</li>
+            <li>20W &amp; 40W laser module upgrades</li>
+            <li>Rotary module for cylindrical work</li>
+            <li>200W CNC Module bundle compatible</li>
+            <li>Snapmaker Luban / Orca software</li>
+          </ul>
+          <div class="product-price">from <strong>&euro;799</strong> <small>VAT incl. &middot; A150 / A250T / A350T &middot; save up to &euro;1,050</small></div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="section-label fade-up">Why Choose Us</div>
+  <h2 class="section-title fade-up">AUTHORIZED.<br>EXPERIENCED.<br>LOCAL.</h2>
+  <div class="why-grid">
+    <div class="why-cards">
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="why-card-title">Full Warranty</div>
+        <div class="why-card-desc">12–24 month EU warranty on all products. Local repair centre, no cross-border returns headaches.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="why-card-title">Fast Dispatch</div>
+        <div class="why-card-desc">Same-day despatch on in-stock units. Next-day delivery available across the region.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="why-card-title">Expert Support</div>
+        <div class="why-card-desc">Dedicated technical team. Live chat, phone, and on-site setup assistance for business customers.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="why-card-title">Trade Pricing</div>
+        <div class="why-card-desc">Special rates for schools, makerspaces, and resellers. Volume discounts from 3 units.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="why-card-title">Demo Unit</div>
+        <div class="why-card-desc">Try before you buy. Visit our showroom or request a live online demo with a real machine running.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-card-title">Training</div>
+        <div class="why-card-desc">Onboarding sessions, software walkthroughs, and a growing library of local-language tutorials.</div>
+      </div>
+    </div>
+    <div class="why-info fade-up">
+      <div class="why-big-num"><span>7</span>&nbsp;YRS</div>
+      <p class="why-text">Seven years as an authorized Snapmaker partner — we've supported everyone from first-time hobbyists to industrial prototyping teams. We know these machines inside out.</p>
+      <div class="why-big-num"><span>200+</span></div>
+      <p class="why-text">Over 200 units shipped across the region. Our after-sales satisfaction rate sits above 97% — because we don't disappear after the sale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div style="text-align:center">
+    <div class="section-label fade-up" style="justify-content:center">How It Works</div>
+    <h2 class="section-title fade-up">FROM INTEREST<br>TO MAKING</h2>
+    <p class="section-subtitle fade-up" style="margin:0 auto;">Four simple steps from first enquiry to your first print, cut, or engrave.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step fade-up"><div class="step-num">01</div><div class="step-title">Enquire</div><p class="step-desc">Fill the contact form or call us. Tell us your use case — we'll recommend the right model and bundle.</p></div>
+    <div class="step fade-up"><div class="step-num">02</div><div class="step-title">Quote</div><p class="step-desc">We send a detailed quote within 24 hours. Competitive pricing, bundle deals, and financing available.</p></div>
+    <div class="step fade-up"><div class="step-num">03</div><div class="step-title">Deliver</div><p class="step-desc">Your machine ships from local stock — fully tested, insured, and tracked to your door.</p></div>
+    <div class="step fade-up"><div class="step-num">04</div><div class="step-title">Create</div><p class="step-desc">Unbox, follow the guided setup, and start making. We're on call for any questions as you get started.</p></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-title">READY TO BUILD<br>SOMETHING REAL?</div>
+  <p class="cta-banner-sub">Get a personalized quote today — no commitment, no pressure.</p>
+  <div class="cta-banner-actions">
+    <a href="#contact" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+      Contact Us Now
+    </a>
+    <a href="#products" class="btn-outline">View All Products</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-up">Get In Touch</div>
+  <h2 class="section-title fade-up">LET'S TALK<br>MACHINES</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.75;font-weight:300;">Whether you're a first-time buyer or looking to kit out an entire makerspace, our team is here to help you find the right solution at the right price.</p>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg></div>
+        <div><div class="contact-item-title">Sales Hotline</div><div class="contact-item-val">+372 5185 404 &middot; Mon–Fri 9–18</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-item-title">Email</div><div class="contact-item-val">laurisoosaar@gmail.com</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-item-title">Showroom</div><div class="contact-item-val">Lennuradari tee 11, Tallinn, Estonia &middot; by appointment</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div><div class="contact-item-title">Online Demo</div><div class="contact-item-val">Book a 30-min live machine walkthrough — no travel required</div></div>
+      </div>
+    </div>
+
+    <!-- FORMSPREE CONTACT FORM -->
+    <div class="contact-form fade-up">
+
+      <!-- Success panel — shown by @formspree/ajax on submission -->
+      <div data-fs-success style="text-align:center;padding:3rem 1rem;">
+        <div style="width:64px;height:64px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.06em;color:#fff;margin-bottom:0.5rem;">Message Sent!</div>
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;">Thanks! We'll get back to you within 1 business day.<br>Check your inbox for a confirmation.</p>
+      </div>
+
+      <!-- Global error banner -->
+      <div data-fs-error style="margin-bottom:1rem;"></div>
+
+      <form id="snapmaker-form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-fname">First Name</label>
+            <input id="f-fname" name="first_name" type="text" placeholder="John" required data-fs-field>
+            <span data-fs-error="first_name" style="font-size:0.72rem;color:#f87171;margin-top:0.2rem;"></span>
+          </div>
+          <div class="form-group">
+            <label for="f-lname">Last Name</label>
+            <input id="f-lname" name="last_name" type="text" placeholder="Smith" required data-fs-field>
+            <span data-fs-error="last_name" style="font-size:0.72rem;color:#f87171;margin-top:0.2rem;"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-email">Your Email</label>
+            <input id="f-email" name="email" type="email" placeholder="john@company.com" required data-fs-field>
+            <span data-fs-error="email" style="font-size:0.72rem;color:#f87171;margin-top:0.2rem;"></span>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="+372 ..." data-fs-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-product">I'm interested in</label>
+          <select id="f-product" name="product" required data-fs-field>
+            <option value="">Select a product...</option>
+            <option>Snapmaker U1 — from €749 (Multi-Color, SnapSwap)</option>
+            <option>Snapmaker Artisan — from €2,199 (3-in-1 Standard, 10W Laser)</option>
+            <option>Snapmaker Artisan Premium — from €2,369 (3-in-1, 40W Laser)</option>
+            <option>Snapmaker 2.0 — from €799 (A150 / A250T / A350T)</option>
+            <option>Snapmaker J1S — €1,399 (High-Speed IDEX)</option>
+            <option>Laser / CNC Modules &amp; Accessories</option>
+            <option>Multi-unit / Business Quote</option>
+          </select>
+          <span data-fs-error="product" style="font-size:0.72rem;color:#f87171;margin-top:0.2rem;"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" rows="4" placeholder="Tell us about your use case, budget, or any questions..." data-fs-field></textarea>
+          <span data-fs-error="message" style="font-size:0.72rem;color:#f87171;margin-top:0.2rem;"></span>
+        </div>
+
+        <button type="submit" data-fs-submit-btn class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem 2rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Order / Enquiry
+        </button>
+
+        <p style="margin-top:0.75rem;font-size:0.75rem;color:var(--muted);text-align:center;line-height:1.5;">
+          Message sent directly &mdash; no email client needed.<br>
+          Delivered to <strong style="color:var(--accent)">laurisoosaar@gmail.com</strong>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark"></div>
+        <span class="footer-logo-name">SNAPMAKER</span>
+      </div>
+      <p class="footer-tagline">Official authorized distributor for Snapmaker fabrication systems. Local support, EU warranty, fast delivery.</p>
+      <div class="footer-social">
+        <div class="social-btn" title="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+        <div class="social-btn" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div class="social-btn" title="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="#products">Snapmaker U1 (Multi-Color)</a></li>
+        <li><a href="#products">Snapmaker Artisan 3-in-1</a></li>
+        <li><a href="#products">Snapmaker 2.0 Series</a></li>
+        <li><a href="#products">J1S IDEX 3D Printer</a></li>
+        <li><a href="#products">Laser Modules (10W/20W/40W)</a></li>
+        <li><a href="#products">Rotary Module &amp; Add-ons</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Showroom</a></li>
+        <li><a href="#">Partners &amp; Resellers</a></li>
+        <li><a href="#">News &amp; Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="#">Warranty Policy</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Setup Guides</a></li>
+        <li><a href="#">Luban Software</a></li>
+        <li><a href="#">Training Sessions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025 Snapmaker Authorized Distributor. Not affiliated with Snapmaker Inc. beyond authorized reseller status.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Sale</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- @formspree/ajax CDN integration -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#snapmaker-form', formId: 'maqlaweg' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+<script>
+  // Scroll fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
