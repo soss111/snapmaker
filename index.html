@@ -93,7 +93,17 @@
   .product-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
   .product-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,107,0,0.2); }
   .product-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
-  .product-img { height: 200px; background: linear-gradient(135deg,#1c1c22,#222228); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .product-img {
+    --product-img-h: 200px;
+    height: var(--product-img-h);
+    background: linear-gradient(135deg,#1c1c22,#222228);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-img--tall { height: calc(var(--product-img-h) * 1.3 * 1.2 * 1.2); }
   .product-card.featured .product-img { height: 100%; min-height: 260px; }
   .product-img-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,107,0,0.08) 0%, transparent 70%); pointer-events: none; z-index: 1; }
   .product-img-inner { width: 70%; height: 70%; opacity: 0.9; }
@@ -314,7 +324,7 @@
 
     <!-- ARTISAN -->
     <a href="#contact" class="product-card fade-up">
-      <div class="product-img">
+      <div class="product-img product-img--tall">
         <div class="product-img-glow"></div>
         
  <img src="https://us.snapmaker.com/cdn/shop/files/Artisan-3-in-1-3D-Printer_1.jpg?v=1775138101&width=1214" alt="Snapmaker Artisan"
@@ -338,7 +348,7 @@
 
     <!-- J1s -->
     <a href="#contact" class="product-card fade-up">
-      <div class="product-img">
+      <div class="product-img product-img--tall">
         <div class="product-img-glow"></div>
         
  <img src="https://shop.snapmaker.com/cdn/shop/files/J1s_540e77d4-d0cb-46e9-954a-7994d3ef20a7.jpg?v=1775116979&width=1214" alt="Snapmaker J1S"
